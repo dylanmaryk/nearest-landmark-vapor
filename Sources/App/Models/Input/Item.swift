@@ -1,5 +1,7 @@
 import Vapor
 
+typealias Result = Item
+
 struct Item: Content {
     let position: [Double]
     let distance: Int
