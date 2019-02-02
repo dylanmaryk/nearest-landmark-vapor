@@ -1,5 +1,3 @@
 import Vapor
 
-struct Place: Content {
-    let icon: String
-}
+struct Place: Content {}

@@ -12,7 +12,7 @@ final class LandmarksController {
             let hereAppCode = Environment.get("here-app-code") else {
                 throw Abort(.internalServerError)
         }
-        let url = String(format: LandmarksController.hereApiUrl, hereAppId, hereAppCode, lat, lng)
+        let url = String(format: LandmarksController.hereApiUrl, arguments: [hereAppId, hereAppCode, lat, lng])
         let res = try req.client().get(url)
         return res
             .flatMap(to: ResultsWrapper.self) { res in
