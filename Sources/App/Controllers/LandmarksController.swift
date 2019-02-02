@@ -18,7 +18,12 @@ final class LandmarksController {
             try res.content.decode(ResultsWrapper.self)
         }
         let landmarksWrapper = resultsWrapper.map(to: LandmarksWrapper.self) { resultsWrapper in
-            let landmarks = resultsWrapper.results.items.map { Landmark(title: $0.title) }
+            let landmarks = resultsWrapper.results.items
+                .map { Landmark(position: Position(lat: $0.position[0],
+                                                   lng: $0.position[1]),
+                                distance: $0.distance,
+                                title: $0.title) }
+                .sorted { $0.distance < $1.distance }
             return LandmarksWrapper(landmarks: landmarks)
         }
         return landmarksWrapper
