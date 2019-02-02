@@ -22,7 +22,8 @@ final class LandmarksController {
                 .map { Landmark(position: Position(lat: $0.position[0],
                                                    lng: $0.position[1]),
                                 distance: $0.distance,
-                                title: $0.title) }
+                                title: $0.title,
+                                placeUrl: $0.href) }
                 .sorted { $0.distance < $1.distance }
             return LandmarksWrapper(landmarks: landmarks)
         }
