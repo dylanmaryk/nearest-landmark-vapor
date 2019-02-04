@@ -8,8 +8,8 @@ final class LandmarksController {
             let lng = req.query[String.self, at: "lng"] else {
                 throw Abort(.badRequest)
         }
-        guard let hereAppId = Environment.get("here-app-id"),
-            let hereAppCode = Environment.get("here-app-code") else {
+        guard let hereAppId = Environment.get("HERE_APP_ID"),
+            let hereAppCode = Environment.get("HERE_APP_CODE") else {
                 throw Abort(.internalServerError)
         }
         let url = String(format: LandmarksController.hereApiUrl,
