@@ -2,7 +2,7 @@ import Vapor
 
 final class LandmarksController {
     
-    private static let hereApiUrl = "https://places.cit.api.here.com/places/v1/discover/explore?app_id=%s&app_code=%s&in=%s,%s;r=500&cat=sights-museums&size=1&show_content=wikipedia"
+    private static let hereApiUrl = "https://places.cit.api.here.com/places/v1/discover/explore?app_id=%s&app_code=%s&in=%s,%s;r=500&cat=sights-museums&show_content=wikipedia"
     
     func get(_ req: Request) throws -> Future<LandmarksWrapper> {
         guard let lat = req.query[String.self, at: "lat"],
